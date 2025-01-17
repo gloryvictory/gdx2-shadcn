@@ -1,5 +1,5 @@
 "use client";
-import { ChevronsDown, Menu } from "lucide-react";
+// import { ChevronsDown, Menu } from "lucide-react";
 import React from "react";
 // import {  Sheet,  SheetContent,  SheetFooter,  SheetHeader,  SheetTitle,  SheetTrigger,} from "../ui/sheet";
 // import { Separator } from "../ui/separator";
@@ -17,6 +17,7 @@ import Link from "next/link";
 import { ToggleTheme } from "./toogle-theme";
 import { Logo } from "../icons/Logo";
 import { BtnRefresh } from "./btn-clear";
+import { siteConfig } from "@/config/site";
 
 interface RouteProps {
   href: string;
@@ -27,25 +28,6 @@ interface FeatureProps {
   title: string;
   description: string;
 }
-
-const routeList: RouteProps[] = [
-  {
-    href: "#testimonials",
-    label: "Testimonials",
-  },
-  {
-    href: "#team",
-    label: "Team",
-  },
-  {
-    href: "#contact",
-    label: "Contact",
-  },
-  {
-    href: "#faq",
-    label: "FAQ",
-  },
-];
 
 const featureList: FeatureProps[] = [
   {
@@ -79,16 +61,16 @@ export const Navbar = () => {
             <NavigationMenuContent>
               <div className="grid w-[600px] grid-cols-2 gap-5 p-4">               
                 <ul className="flex flex-col gap-2">
-                  {featureList.map(({ title, description }) => (
+                  {siteConfig.navItems.map(({ label, href }) => (
                     <li
-                      key={title}
+                      key={label}
                       className="rounded-md p-3 text-sm hover:bg-muted"
                     >
                       <p className="mb-1 font-semibold leading-none text-foreground">
-                        {title}
+                        {label}
                       </p>
                       <p className="line-clamp-2 text-muted-foreground">
-                        {description}
+                        {href}
                       </p>
                     </li>
                   ))}
@@ -97,7 +79,7 @@ export const Navbar = () => {
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            {routeList.map(({ href, label }) => (
+            {siteConfig.navItems.map(({ href, label }) => (
               <NavigationMenuLink key={href} asChild>
                 <Link href={href} className="text-base px-2">
                   {label}

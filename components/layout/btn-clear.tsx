@@ -4,7 +4,7 @@ import {RotateCcw } from "lucide-react";
 export const BtnRefresh = () => {
   return (
     <Button
-      onClick={() =>{}}
+      onClick={() =>{window.localStorage.clear(); window.location.reload();}}
       size="sm"
       variant="ghost"
       className="w-full justify-start"
