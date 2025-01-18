@@ -18,7 +18,7 @@ export const siteConfig = {
     },
     {
       label: "Авторы",
-      href: "/blog",
+      href: "/authors",
     },
     {
       label: "О проекте",

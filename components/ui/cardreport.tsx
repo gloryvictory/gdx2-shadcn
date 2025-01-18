@@ -1,5 +1,5 @@
 import { MouseEventHandler } from "react";
-import { Card, CardContent, CardFooter, CardHeader } from "./card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./card";
 import { IReport } from "@/types/models";
 
 
@@ -16,32 +16,23 @@ export default function CardReport({item, onClick } : ReportCardProps ) {
 
 
   return (
-    <Card className="max-w-[400px] hover:shadow-large  hover:outline-offset-1	 hover:ring-2 hover:ring-blue-500/50 focus:shadow-large focus:outline  focus:ring-2 focus:ring-blue-500/50">
-      <CardHeader className="flex gap-3">
-        <div className="flex flex-col">
-          <p className="text-md text-small text-default-500">{item.id}</p>
+    <>
+      <Card className="max-w-[400px] hover:shadow-large  hover:outline-offset-1	 hover:ring-2 hover:ring-blue-500/50 focus:shadow-large focus:outline  focus:ring-2 focus:ring-blue-500/50 ">
+        <CardHeader className="flex gap-3">
+          <CardTitle className="text-small">{`${item.author_name.length ? `${item.author_name}` : 'Автор не указан.'} `}</CardTitle>
+        </CardHeader>
+        <CardContent className="text-small text-default-500">
+          {item.report_name}
+        </CardContent>       
+        <div className="bottom-0">
+          <CardFooter className="p-2 flex flex-row gap-1 items-center justify-between space-x-6  text-small bottom-0">
+            <div className="text-small" >№ РГФ: <strong>{`${item.rgf.length ? `${item.rgf}` : ''} `}</strong></div>
+            <div className="text-small" ><strong>{`${item.tgf.length ? `${item.tgf}` : ''} `}</strong></div>
+            <div className="text-small" >Год: <strong>{`${item.year_str.length ? `${item.year_str}` : ''}`}</strong></div>
+          </CardFooter>
         </div>
-      </CardHeader>
-      {/* <Divider /> */}
-      <CardContent>
-        <strong className="text-small">{`${item.author_name.length ? `${item.author_name}` : 'Автор не указан.'} `} </strong>
-        <p className="text-small text-default-500">{item.report_name}</p>
-      </CardContent>
-      {/* <Divider /> */}
-      <CardFooter>
-      <div className="flex gap-3 items-center justify-between space-x-6  text-small"> 
-      {/* flex  items-center justify-between space-x-6 */}
-        <div>{`№ РГФ: ${item.rgf.length ? `${item.rgf}` : ''} `}</div>
-        {/* <Divider orientation="vertical" /> */}
-        <div>{`${item.tgf.length ? `${item.tgf}` : ''} `}</div>
-        {/* <Divider orientation="vertical" /> */}
-        <div>{'Год: ' + `${item.year_str.length ? `${item.year_str}` : ''}`}</div>
-      </div>
-      </CardFooter>
-    </Card>
+      </Card>     
+    </>
   );
 }
 
-{/* <Link isExternal showAnchorIcon href="https://github.com/nextui-org/nextui">
-          Visit source code on GitHub.
-        </Link> */}

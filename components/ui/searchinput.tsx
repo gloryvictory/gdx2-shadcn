@@ -1,7 +1,5 @@
 "use client"
 
-// import { Search } from "lucide-react";
-
 import React, { useState } from "react";
 import { IReport, IResultReport } from "@/types/models";
 import { gdx2_urls } from "@/config/urls";
@@ -10,13 +8,13 @@ import { Input } from "./input";
 import { Button } from "./button";
 import { Spinner } from "./spinner";
 import CardReport from "./cardreport";
+import MyCard from "./myCard";
 
 
 
 export default function SearchInput() {
   
-  const[inputValue, setInputValue] = React.useState("");
-
+  const [inputValue, setInputValue] = React.useState("");
   const [msgError, setMsgError] = useState<string>('')
   const [isLoading, setLoading] = useState<boolean>(false)
   const [initialList, setInitialList] = useState<IReport[]>()
@@ -68,53 +66,41 @@ export default function SearchInput() {
 // width:-webkit-fill-available
   return (
     <div className={"w-full"}> 
-
+    
+    <div className={"flex w-full-5 items-center justify-items-center content-center space-x-2 "}>
       <Input
-      aria-label="Поиск"
-      className="w-full bg-default-100 text-sm ml-2 mr-2"
-      // classNames={{
-      //   inputWrapper: "bg-default-100",
-      //   input: "text-sm",
-      // }}
-      // endContent={
-      //   <Button 
-      //     className="hidden lg:inline-block"
-      //     onClick={onPress}
-      //   >Найти</Button>
-      //   // <Kbd className="hidden lg:inline-block" keys={["command"]}>
-      //   //   K
-      //   // </Kbd>
-      // }
-      // labelPlacement="outside"
-      placeholder="Поиск..."
-      // startContent={
-      //   <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
-      // }
-      type="search"
-      onChange={onChange}
-      value={inputValue}
-      onKeyDown={onEnterPress}
-      />
-     <Button 
-          className="hidden lg:inline-block"
-          onClick={onPress}
-        >Найти
-      </Button>
+        aria-label="Поиск"
+        className="flex w-full bg-default-100 text-sm hover:outline-offset-1 hover:ring-2 hover:ring-blue-500/50 focus:ring-blue-500/50 "
+        placeholder="Поиск..."
+        type="search"
+        onChange={onChange}
+        value={inputValue}
+        onKeyDown={onEnterPress}
+        />
+      <Button className="lg:inline-block hover:ring-blue-200/50  bg-slate-500 ring-blue-500/50" onClick={onPress}>Найти</Button>
+    </div>
+
+      {/* {Вы искали:      <strong>{inputValue.length > 3 ? inputValue : ''}</strong> } */}
+      <div className='flex w-full-5 bg-slate-200 rounded-md p-2 text-center text-sm mt-1 dark:bg-slate-800 dark:hover:bg-slate-500 dark:text-white whitespace-normal' >
+        Найдено отчетов: &nbsp; <strong>{initialList?.length ? ` ${initialList?.length}`: ' ' }</strong>  
+      </div>    
+    
+      { isLoading && 
+        <div className="flex w-full-5 flex-col text-center items-center justify-items-center content-center align-baseline">
+          <Spinner size="lg" className="flex w-full-5  flex-col text-center items-center justify-items-center content-center align-baseline bg-black dark:bg-white" /> 
+        </div>
+      }
       
-      <div className='bg-slate-100 rounded-md p-2 text-center text-sm mt-1 dark:bg-slate-800 dark:hover:bg-slate-500 dark:text-white' >
-        Вы искали: <strong>{inputValue.length > 3 ? inputValue : ""}</strong> Найдено: <strong>{initialList?.length ? `${initialList?.length}`: "" }</strong> отчетов
-      </div>
-      { isLoading && <Spinner size="lg" className="flex justify-center align-middle " /> }
       { msgError && `Error: ${msgError}` }
+      {/* <MyCard/> */}
 
-      <div className="gap-3 grid grid-cols-3 sm:grid-cols-3 mt-1">
-
-      {initialList?.length && initialList?.map((item: IReport ) => (
-              <CardReport key={item.id} item={item} onClick={()=>{setCurentItem(item); showDrawer(); console.log(item); } }  />
-
+      <div className="gap-2 grid grid-cols-3 sm:grid-cols-3 mt-1">
+        {initialList?.length && initialList?.map((item: IReport ) => (
+          // <CardReport key={item.id} item={item} onClick={()=>{setCurentItem(item); showDrawer(); console.log(item); } }  />
+          <MyCard key={item.id} item={item} onClick={()=>{setCurentItem(item); showDrawer(); console.log(item); } }  />
         ))
         // setCurentItem(item); showDrawer()
-      }
+        }
       </div>
 
       

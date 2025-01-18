@@ -18,6 +18,8 @@ export const gdx2_urls = {
   
   gdx2_url_report_search          : `${gdx2_backend_url}/report/query?q=`,
   
+  gdx2_url_report_author          : `${gdx2_backend_url}/report/author`,
+  
 
 
 }

@@ -24,7 +24,7 @@ export function useSearch(query: string| undefined) {
       setError('')
       setLoading(true)
       const response = await axios.get<IResultReport>(url)
-      setData(response.data)
+      setData(response?.data)
       // const count1 = window.localStorage.getItem(url); // Retrieve auth token from localStorage
       // if (count1) {
       //   setCount(JSON.parse(count1)) 
@@ -36,9 +36,9 @@ export function useSearch(query: string| undefined) {
 
       setLoading(false)
     } catch (e: unknown) {
-      const error = e as AxiosError
-      setLoading(false)
-      setError(error.message)
+        const error = e as AxiosError
+        setLoading(false)
+        setError(error?.message)
     }
   }
 
