@@ -1,5 +1,5 @@
 import { MouseEventHandler } from "react";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../card";
 import { IReport } from "@/types/models";
 
 

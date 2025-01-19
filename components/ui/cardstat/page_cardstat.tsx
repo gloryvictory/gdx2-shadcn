@@ -9,7 +9,7 @@ export default function CardStat() {
     <div className="gap-2 grid grid-cols-2 sm:grid-cols-4">
 
       {list_stat.map((item, index) => (
-        <StatCard key={index} title={item.title} url={item.url}/>  
+        <StatCard key={index} title={item.title} url={item.url} link={item.link}/>  
       ))}
 
     </div>

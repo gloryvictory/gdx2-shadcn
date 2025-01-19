@@ -69,3 +69,11 @@ export interface ICountOnMap {
   stl_count: number
   stp_count: number
 }
+
+export interface IList {
+  lastupdate?: string
+  id?: number
+  name_ru?: string
+  error?: string
+  }
+  

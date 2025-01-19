@@ -7,7 +7,7 @@ import axios, { AxiosError } from "axios";
 import { Input } from "./input";
 import { Button } from "./button";
 import { Spinner } from "./spinner";
-import CardReport from "./cardreport";
+import CardReport from "./old/cardreport";
 import MyCard from "./myCard";
 
 

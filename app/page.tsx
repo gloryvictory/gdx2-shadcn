@@ -1,4 +1,4 @@
-import CardStat from "@/components/ui/cardstat";
+import CardStat from "@/components/ui/cardstat/page_cardstat";
 
 export default function Home() {
   return (

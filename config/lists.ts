@@ -1,6 +1,13 @@
 import { gdx2_urls } from "./urls";
 
-export const list_stat = [
+interface IStatList {
+  title?: string
+  url?: string
+  link?: string
+  }
+  
+
+export const list_stat: IStatList[] = [
   {
     title: "Отчетов",
     url: gdx2_urls.gdx2_url_report_count,
@@ -8,6 +15,7 @@ export const list_stat = [
   {
     title: "Авторов",
     url: gdx2_urls.gdx2_url_report_author_count,
+    link: "/authors"
   },
   {
     title: "Листов карт",
