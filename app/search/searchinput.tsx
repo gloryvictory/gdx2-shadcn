@@ -9,6 +9,7 @@ import { Button } from "../../components/ui/button";
 import { Spinner } from "../../components/ui/spinner";
 // import CardReport from "../../components/ui/old/cardreport";
 import MyCard from "../../components/ui/myCard";
+import ReportDrawer from "./ReportDrawer";
 
 
 
@@ -19,16 +20,16 @@ export default function SearchInput() {
   const [isLoading, setLoading] = useState<boolean>(false)
   const [initialList, setInitialList] = useState<IReport[]>()
 
-  const [open, setOpen] = useState(false);
+  const [openDrawer, setOpenDrawer] = useState(false);
   const [curentItem, setCurentItem] = useState<IReport>();
   
   
   const showDrawer = () => {
-    setOpen(true);
+    setOpenDrawer(true);
   };
 
   const onClose = () => {
-    setOpen(false);
+    setOpenDrawer(false);
   };
 
   const onChange = ( e: React.ChangeEvent<HTMLInputElement>) => {
@@ -97,13 +98,12 @@ export default function SearchInput() {
       <div className="w-full-5 gap-1 grid grid-cols-3 sm:grid-cols-3 mt-1">
         {initialList?.length && initialList?.map((item: IReport ) => (
           // <CardReport key={item.id} item={item} onClick={()=>{setCurentItem(item); showDrawer(); console.log(item); } }  />
-          <MyCard key={item.id} item={item} onClick={()=>{setCurentItem(item); showDrawer(); console.log(item); } }  />
+          <MyCard key={item.id} item={item} onClick={()=>{setCurentItem(item); showDrawer();  console.log(`showDrawer: ${openDrawer} `)} }  />
         ))
         // setCurentItem(item); showDrawer()
         }
       </div>
-
-      
+      {openDrawer && <ReportDrawer open={openDrawer} onClose={onClose} showDrawer={showDrawer} item={curentItem}/>   }
 
     </div>
     

@@ -1,5 +1,6 @@
 import { MouseEventHandler } from "react";
 import { IReport } from "@/types/models";
+import ReportDrawer from "@/app/search/ReportDrawer";
 
 
 export interface ReportCardProps  {
@@ -27,14 +28,14 @@ export default function MyCard({item, onClick } : ReportCardProps ) {
         {/* <hr></hr> */}
         <div className="mt-auto  flex flex-col grow-1">
         <hr className="mt-1 w-full h-divider"></hr>
-        <div className="text-small mt-2 p-2 flex flex-row gap-1 items-center justify-center space-x-6">
-          <div className="text-small dark:text-slate-50 " >№ РГФ: <strong>{`${item.rgf.length ? `${item.rgf}` : ''} `} </strong></div>
-          <div className="text-small dark:text-slate-50 " ><strong>{`${item.tgf.length ? `${item.tgf}` : ''} `}</strong></div>
-          <div className="text-small dark:text-slate-50 " >Год: <strong>{`${item.year_str.length ? `${item.year_str}` : ''}`}</strong></div>
-        </div>
-
+          <div className="text-small mt-2 p-2 flex flex-row gap-1 items-center justify-center space-x-6">
+            <div className="text-small dark:text-slate-50 " >№ РГФ: <strong>{`${item.rgf.length ? `${item.rgf}` : ''} `} </strong></div>
+            <div className="text-small dark:text-slate-50 " ><strong>{`${item.tgf.length ? `${item.tgf}` : ''} `}</strong></div>
+            <div className="text-small dark:text-slate-50 " >Год: <strong>{`${item.year_str.length ? `${item.year_str}` : ''}`}</strong></div>
+          </div>
         </div>
       </div>
+      
     </>    
   );
 };
