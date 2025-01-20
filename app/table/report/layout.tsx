@@ -1,4 +1,4 @@
-export default function DocsLayout({
+export default function ReportAllLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -6,7 +6,7 @@ export default function DocsLayout({
 
   // <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
   return (
-    <section className="flex flex-col items-center justify-center">
+    <section className="flex flex-col items-center justify-center ">
       {/* <div className="inline-block max-w-lg text-center justify-center"> */}
         {children}
       {/* </div> */}

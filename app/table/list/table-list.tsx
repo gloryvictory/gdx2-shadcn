@@ -5,7 +5,6 @@ import { AgGridReact } from 'ag-grid-react';
 import { useEffect, useMemo, useState } from "react";
 import type { ColDef } from "ag-grid-community";
 import { AllCommunityModule, ModuleRegistry } from "ag-grid-community";
-import { useAuthor } from '@/hooks/useAuthor';
 import { gdx2_urls } from '@/config/urls';
 import { IData, IList, IResult } from '@/types/models';
 import axios, { AxiosError } from 'axios';
@@ -14,19 +13,17 @@ import "./styles.css";
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
-const DataTableDemo = () => {
+const DataTableList = () => {
 
-  // const [data, setData] = useState<IResult>()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  
   const [rowData, setRowData] = useState<IList[] >([]);
 
   const [columnDefs, setColumnDefs] = useState<ColDef[]>([
-    { headerName: "№",            field: "id",          filter: true, sortable: true, resizable: true },
-    { headerName: "Наименование", field: "name_ru",     filter: true, sortable: true, resizable: true },
-    { headerName: "Дата",         field: "lastupdate",  filter: true, sortable: true, resizable: true },
-    { headerName: "Ошибка",       field: "error",       filter: true, sortable: true, resizable: true },
+    { headerName: "№",                field: "id",          filter: true, sortable: true, resizable: true },
+    { headerName: "Наименование",     field: "name_ru",     filter: true, sortable: true, resizable: true },
+    { headerName: "Дата обновления",  field: "lastupdate",  filter: true, sortable: true, resizable: true },
+    { headerName: "Ошибка",           field: "error",       filter: true, sortable: true, resizable: true },
   ]);
 
   const pagination = true;
@@ -34,13 +31,9 @@ const DataTableDemo = () => {
   const paginationPageSizeSelector = [500, 1000, 5000, 10000];
 
   
-  // useEffect(() => {
-  //   fetch("https://www.ag-grid.com/example-assets/olympic-winners.json") // Fetch data from server
-  //     .then((result) => result.json()) // Convert to JSON
-  //     .then((rowData) => setRowData(rowData)); // Update state of `rowData`
-  // }, []);
+
   async function fetchData() {
-    const url = `${gdx2_urls.gdx2_url_report_author}`
+    const url = `${gdx2_urls.gdx2_url_report_list}`
     console.log(url)
     try {
       setError('')
@@ -53,7 +46,8 @@ const DataTableDemo = () => {
         const data2: IData[] = response?.data?.data
         
         var errorArr: Array<IList> = [];
-        let sampleRegEx: RegExp = /^[а-яА-ЯёЁa-zA-Z]+ [а-яА-ЯёЁa-zA-Z]. ?[а-яА-ЯёЁa-zA-Z].$/;
+        //  проверяем на совпадение регулярного выражения вида "Иванов И.И."
+        let sampleRegEx: RegExp = /^[A-Z]-\d\d/;
 
         // console.log(errorArr);
         
@@ -115,4 +109,4 @@ const DataTableDemo = () => {
   );
 };
 
-export default DataTableDemo;
+export default DataTableList;

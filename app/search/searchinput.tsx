@@ -4,11 +4,11 @@ import React, { useState } from "react";
 import { IReport, IResultReport } from "@/types/models";
 import { gdx2_urls } from "@/config/urls";
 import axios, { AxiosError } from "axios";
-import { Input } from "./input";
-import { Button } from "./button";
-import { Spinner } from "./spinner";
-import CardReport from "./old/cardreport";
-import MyCard from "./myCard";
+import { Input } from "../../components/ui/input";
+import { Button } from "../../components/ui/button";
+import { Spinner } from "../../components/ui/spinner";
+import CardReport from "../../components/ui/old/cardreport";
+import MyCard from "../../components/ui/myCard";
 
 
 
@@ -94,7 +94,7 @@ export default function SearchInput() {
       { msgError && `Error: ${msgError}` }
       {/* <MyCard/> */}
 
-      <div className="gap-2 grid grid-cols-3 sm:grid-cols-3 mt-1">
+      <div className="w-full-5 gap-1 grid grid-cols-3 sm:grid-cols-3 mt-1">
         {initialList?.length && initialList?.map((item: IReport ) => (
           // <CardReport key={item.id} item={item} onClick={()=>{setCurentItem(item); showDrawer(); console.log(item); } }  />
           <MyCard key={item.id} item={item} onClick={()=>{setCurentItem(item); showDrawer(); console.log(item); } }  />

@@ -18,7 +18,16 @@ export const gdx2_urls = {
   
   gdx2_url_report_search          : `${gdx2_backend_url}/report/query?q=`,
   
+  gdx2_url_report_all             : `${gdx2_backend_url}/report/all`,
   gdx2_url_report_author          : `${gdx2_backend_url}/report/author`,
+  gdx2_url_report_list            : `${gdx2_backend_url}/report/list`,
+  gdx2_url_report_subrf            : `${gdx2_backend_url}/report/subrf`,
+  gdx2_url_report_org            : `${gdx2_backend_url}/report/org`,
+  gdx2_url_report_area            : `${gdx2_backend_url}/report/area`,
+  gdx2_url_report_field            : `${gdx2_backend_url}/report/field`,
+  gdx2_url_report_lu            : `${gdx2_backend_url}/report/lu`,
+  gdx2_url_report_pi            : `${gdx2_backend_url}/report/pi`,
+  gdx2_url_report_vid_rab            : `${gdx2_backend_url}/report/vid_rab`,
   
 
 

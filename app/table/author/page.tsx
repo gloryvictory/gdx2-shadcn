@@ -2,7 +2,7 @@
 
 import DataTableDemo from "./table-author";
 
-export default function Author() {
+export default function Report_all() {
 
 
   return (

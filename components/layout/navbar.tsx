@@ -25,11 +25,12 @@ interface RouteProps {
 }
 
 
-
+{/* <header className="shadow-inner bg-opacity-15 w-[90%] md:w-[70%] lg:w-[75%] lg:max-w-screen-xl top-5 mx-auto sticky border border-secondary z-40 rounded-2xl flex justify-between items-center p-2 bg-card border-slate-600"> */}
+// 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   return (
-    <header className="shadow-inner bg-opacity-15 w-[90%] md:w-[70%] lg:w-[75%] lg:max-w-screen-xl top-5 mx-auto sticky border border-secondary z-40 rounded-2xl flex justify-between items-center p-2 bg-card border-slate-600">
+    <header className="shadow-inner bg-opacity-15 w-full lg:max-w-screen-xl top-5 mx-auto sticky border border-secondary z-40 rounded-2xl flex justify-between items-center p-2 bg-card border-slate-600">
       <Link href="/" className="font-bold text-lg flex items-center">
         <Logo className="rounded-lg w-9 h-9 justify-center" />        
         Отчеты
