@@ -77,7 +77,7 @@ const DataTableReport = () => {
         const response = await axios.get<IResultReport>(url)
         const data2: IListReport[] = response?.data?.data
         // console.log(data2);
-        var resultArr: Array<IListReport> = [];
+        let resultArr: Array<IListReport> = [];
         
         data2.forEach((item) => {
           // const last: string =  item?.lastupdate?.toString()!
@@ -136,7 +136,7 @@ const DataTableReport = () => {
   const rowClassRules = useMemo(() => {
     return {
       // row style function
-      "sick-days-warning": (params) => {
+      "sick-days-warning": (params:any) => {
         const error_str:string = params.data.error;
         return error_str.includes('error') ;
       },

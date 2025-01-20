@@ -50,7 +50,7 @@ const DataTableDemo = () => {
         const response = await axios.get<IResult>(url)
         const data2: IData[] = response?.data?.data
         
-        var errorArr: Array<IList> = [];
+        let errorArr: Array<IList> = [];
         let sampleRegEx: RegExp = /^[а-яА-ЯёЁa-zA-Z]+ [а-яА-ЯёЁa-zA-Z]. ?[а-яА-ЯёЁa-zA-Z].$/;
 
         // console.log(errorArr);
@@ -84,7 +84,7 @@ const DataTableDemo = () => {
   const rowClassRules = useMemo(() => {
     return {
       // row style function
-      "sick-days-warning": (params) => {
+      "sick-days-warning": (params:any) => {
         const error_str:string = params.data.error;
         return error_str.includes('error') ;
       },

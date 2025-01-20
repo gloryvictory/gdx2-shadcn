@@ -11,7 +11,7 @@ export default function MyCard({item, onClick } : ReportCardProps ) {
   // onClick
   return (
     <>
-      <div className="flex flex-col p-2 bg-white shadow-lg rounded-lg border-2 max-w-[400px] hover:shadow-large  hover:outline-offset-1	 hover:ring-2 hover:ring-blue-500/50 focus:shadow-large focus:outline  focus:ring-2 focus:ring-blue-500/50
+      <div onClick={onClick} className="flex flex-col p-2 bg-white shadow-lg rounded-lg border-2 max-w-[400px] hover:shadow-large  hover:outline-offset-1	 hover:ring-2 hover:ring-blue-500/50 focus:shadow-large focus:outline  focus:ring-2 focus:ring-blue-500/50
       dark:text-white dark:bg-slate-600">
         <div>
           <p className="text-gray-800 font-semibold dark:text-white ">

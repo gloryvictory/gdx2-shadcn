@@ -45,7 +45,7 @@ const DataTableList = () => {
         const response = await axios.get<IResult>(url)
         const data2: IData[] = response?.data?.data
         
-        var errorArr: Array<IList> = [];
+        let  errorArr: Array<IList> = [];
         //  проверяем на совпадение регулярного выражения вида "Иванов И.И."
         let sampleRegEx: RegExp = /^[A-Z]-\d\d/;
 
@@ -80,7 +80,7 @@ const DataTableList = () => {
   const rowClassRules = useMemo(() => {
     return {
       // row style function
-      "sick-days-warning": (params) => {
+      "sick-days-warning": (params:any) => {
         const error_str:string = params.data.error;
         return error_str.includes('error') ;
       },

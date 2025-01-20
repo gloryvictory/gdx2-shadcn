@@ -7,7 +7,7 @@ import axios, { AxiosError } from "axios";
 import { Input } from "../../components/ui/input";
 import { Button } from "../../components/ui/button";
 import { Spinner } from "../../components/ui/spinner";
-import CardReport from "../../components/ui/old/cardreport";
+// import CardReport from "../../components/ui/old/cardreport";
 import MyCard from "../../components/ui/myCard";
 
 

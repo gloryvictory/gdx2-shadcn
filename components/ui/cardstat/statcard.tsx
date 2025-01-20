@@ -7,7 +7,7 @@ import { Spinner } from "../spinner";
 import Link from "next/link";
 import { IStatList } from "@/config/lists";
 
-const url = gdx2_urls.gdx2_url_report_author_count
+// const url = gdx2_urls.gdx2_url_report_author_count
 
 interface StatCardProps {
   key: number; 
