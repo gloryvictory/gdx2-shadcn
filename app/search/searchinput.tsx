@@ -68,7 +68,7 @@ export default function SearchInput() {
   return (
     <div className={"w-full"}> 
     
-    <div className={"flex w-full-5 items-center justify-items-center content-center space-x-2 "}>
+    <div className={"flex w-full-5 items-center justify-items-center content-center space-x-2 cursor-pointer"}>
       <Input
         aria-label="Поиск"
         className="flex w-full bg-default-100 text-sm hover:outline-offset-1 hover:ring-2 hover:ring-blue-500/50 focus:ring-blue-500/50 "
@@ -95,7 +95,7 @@ export default function SearchInput() {
       { msgError && `Error: ${msgError}` }
       {/* <MyCard/> */}
 
-      <div className="w-full-5 gap-1 grid grid-cols-3 sm:grid-cols-3 mt-1">
+      <div className="w-full-5 gap-1 grid grid-cols-3 sm:grid-cols-3 mt-1 cursor-pointer">
         {initialList?.length && initialList?.map((item: IReport ) => (
           // <CardReport key={item.id} item={item} onClick={()=>{setCurentItem(item); showDrawer(); console.log(item); } }  />
           <MyCard key={item.id} item={item} onClick={()=>{setCurentItem(item); showDrawer();  console.log(`showDrawer: ${openDrawer} `)} }  />
