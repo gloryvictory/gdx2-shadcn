@@ -43,11 +43,11 @@ export function DescriptionItem({ title, content }: DescriptionItemProps) {
       content?.toString().length 
       ? 
       <>
-        <div className="grid grid-cols-2 gap-1 content-center items-center">
+        <div className="grid grid-cols-2 gap-1 content-center items-center dark:text-white">
           <div className="col-span-1">
             {`${title}`}
           </div>
-          <div className="col-span-1 text-black">
+          <div className="col-span-1 text-black dark:text-white">
             {`${content}`}
           </div>
         </div>

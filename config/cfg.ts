@@ -12,7 +12,7 @@ export const gdx2_cfg = {
   gdx2_backend_url  : `http://${gdx2_backend}/${gdx2_api_version}`,
 
   gdx2_map          : `${gdx2_map}`,
-  gdx2_map_db  : `${gdx2_map_db}`,
-  gdx2_map_url  : `http://${gdx2_backend}/${gdx2_map_db}.`,
+  gdx2_map_db       : `${gdx2_map_db}`,
+  gdx2_map_url      : `http://${gdx2_map}/${gdx2_map_db}.`,
   
 }

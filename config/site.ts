@@ -14,7 +14,7 @@ export const siteConfig = {
     },
     {
       label: "Карта",
-      href: "/pricing",
+      href: "/map",
     },
     {
       label: "Авторы",
