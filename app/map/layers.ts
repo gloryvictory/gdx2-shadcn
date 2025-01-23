@@ -1,4 +1,3 @@
-// import { cfg } from '@/app/cfg/cfg';
 import { gdx2_cfg } from '@/config/cfg';
 import type {LayerProps, SourceProps} from 'react-map-gl';
 

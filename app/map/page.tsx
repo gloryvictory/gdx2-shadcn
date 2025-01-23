@@ -1,10 +1,15 @@
 'use client'
 
+import { MapProvider } from "react-map-gl";
 import MapLibreGL_Map from "./Map";
 
 export default function Map_GL() {
   return (
-        <MapLibreGL_Map />
+    <MapProvider>
+
+      <MapLibreGL_Map />
+    </MapProvider>
+      
 
   );
 }

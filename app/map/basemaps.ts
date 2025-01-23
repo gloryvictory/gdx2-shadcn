@@ -1,5 +1,6 @@
 export const LIGHT_MAP_STYLE = 'https://tiles.basemaps.cartocdn.com/gl/positron-gl-style/style.json';
 export const DARK_MAP_STYLE = 'https://tiles.basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json';
+export const VOYAGER_MAP_STYLE = 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json';
 
 // import { MaplibreStyleDefinition, MaplibreStyleSwitcherOptions, TargetProps } from "maplibre-gl-style-switcher";
 
@@ -8,7 +9,6 @@ export const DARK_MAP_STYLE = 'https://tiles.basemaps.cartocdn.com/gl/dark-matte
 //   name: "background",
 //   source: 0,
 //   type: "style",
-
 // }   
 
 // export const basemaps_styles: MaplibreStyleDefinition[] = [
