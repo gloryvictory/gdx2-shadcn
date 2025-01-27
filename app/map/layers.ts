@@ -1,5 +1,7 @@
 import { gdx2_cfg } from '@/config/cfg';
-import type {LayerProps, SourceProps} from 'react-map-gl';
+// import type {LayerProps, SourceProps} from 'react-map-gl';
+import type {LayerProps, SourceProps} from '@vis.gl/react-maplibre';
+// import {Map, Layer} from '@vis.gl/react-maplibre';
 
 
 // const  {gdx2map_host_port_db_name, gdx2map_db_name } = cfg 
@@ -32,7 +34,8 @@ export const fieldSource: SourceProps = {
   id:"gdx2.field",
   type:"vector",
   // tiles:["http://r48-vws03.zsniigg.local:7800/gdx2.field/{z}/{x}/{y}.pbf"],
-  tiles:[`${gdx2_cfg.gdx2_map_url}field/{z}/{x}/{y}.pbf`],
+  // tiles:[`${gdx2_cfg.gdx2_map_url}field/{z}/{x}/{y}.pbf`],
+  tiles:[`http://r48-vws03.zsniigg.local:7800/gdx2.field/{z}/{x}/{y}.pbf`],
   minzoom: 0,
   maxzoom: 22,
 }
@@ -88,8 +91,7 @@ export const lu_labels_Layer: LayerProps = {
 export const sta_Source: SourceProps = {
   id:`${gdx2_cfg.gdx2_map_url}.sta`,
   type:"vector",
-  // tiles:["http://r48-vws03.zsniigg.local:7800/gdx2.lu/{z}/{x}/{y}.pbf"],
-  tiles:[`${gdx2_cfg.gdx2_map_url}sta/{z}/{x}/{y}.pbf`],
+  tiles:[`${gdx2_cfg.gdx2_map_url}sta/{z}/{x}/{y}.pbf`],   // tiles:["http://r48-vws03.zsniigg.local:7800/gdx2.lu/{z}/{x}/{y}.pbf"],
   minzoom: 0,
   maxzoom: 22,
 }
@@ -106,5 +108,23 @@ export const sta_Layer: LayerProps = {
   }
 };
 
-console.log(`${gdx2_cfg.gdx2_map_url}sta/{z}/{x}/{y}.pbf`)
-console.log(`${gdx2_cfg.gdx2_map_url}lu/{z}/{x}/{y}.pbf`)
+// stl
+export const stl_Source: SourceProps = {
+  id:`${gdx2_cfg.gdx2_map_url}.stl`,
+  type:"vector",
+  tiles:[`${gdx2_cfg.gdx2_map_url}stl/{z}/{x}/{y}.pbf`],
+  minzoom: 0,
+  maxzoom: 22,
+}
+
+export const stl_Layer: LayerProps = {
+  id: 'stl',
+  source: `${gdx2_cfg.gdx2_map_url}.stl`,
+  "source-layer": `${gdx2_cfg.gdx2_map_url}.stl`,
+  "type": "line",
+  "paint": {"line-color": "#198EC8"}
+};
+// надо доделать линейный слой
+// console.log(`${gdx2_cfg.gdx2_map_url}sta/{z}/{x}/{y}.pbf`)
+// console.log(`${gdx2_cfg.gdx2_map_url}lu/{z}/{x}/{y}.pbf`)
+
