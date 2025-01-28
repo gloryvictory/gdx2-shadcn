@@ -2,9 +2,9 @@
 
 
 import * as React from 'react';
-import {Layer, Map, Source} from '@vis.gl/react-maplibre';
+import {AttributionControl, FullscreenControl, GeolocateControl, Layer, Map, NavigationControl, ScaleControl, Source} from '@vis.gl/react-maplibre';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { fieldLayer, fieldSource, luLayer, luSource, sta_Layer, sta_Source, stl_Layer, stl_Source } from './layers';
+import { fieldLayer, fieldSource, luLayer, luSource, lu_labels_Layer, sta_Layer, sta_Source, stl_Layer, stl_Source, stp_Layer, stp_Source } from './layers';
 
 
 import { LIGHT_MAP_STYLE } from "./basemaps";
@@ -17,7 +17,9 @@ export default function MapLibreGL_Map() {
       initialViewState={{
         longitude: 66,
         latitude: 66,
-        zoom: 3.5
+        zoom: 3.5,
+        bearing: 0,
+        pitch: 0
       }}
       // style={{width: 600, height: 400}}
       style={{ width: "100vw", height: "100vh", left:0, position:"absolute" }}
@@ -31,7 +33,11 @@ export default function MapLibreGL_Map() {
     
     <Source {...luSource}   >
       <Layer {...luLayer} />
-    </Source>  
+    </Source>   
+
+    {/* <Source {...luSource}   >
+      <Layer {...lu_labels_Layer} />
+    </Source>   */}
 
     <Source {...sta_Source}   >
       <Layer {...sta_Layer} />
@@ -40,6 +46,17 @@ export default function MapLibreGL_Map() {
     <Source {...stl_Source}   >
       <Layer {...stl_Layer} />
     </Source>   
+
+    <Source {...stp_Source}   >
+      <Layer {...stp_Layer} />
+    </Source>   
+
+
+    <FullscreenControl  position="top-right" style={{ marginRight: 10 }} />
+    <GeolocateControl   position="top-right" style={{ marginRight: 10 }}/>
+    <NavigationControl  position="top-right" style={{ marginRight: 10 }}/>
+    <ScaleControl       position="bottom-right" style={{ marginRight: 10 }}/>
+    {/* <AttributionControl customAttribution="vzam" /> */}
 
     </Map>
 

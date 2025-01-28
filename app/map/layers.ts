@@ -30,22 +30,21 @@ import type {LayerProps, SourceProps} from '@vis.gl/react-maplibre';
 // };
 
 // Месторождения
+const layer_name_field:string = 'field';
 export const fieldSource: SourceProps = {
-  id:"gdx2.field",
+  id:`${gdx2_cfg.gdx2_map_db}.${layer_name_field}`,
   type:"vector",
-  // tiles:["http://r48-vws03.zsniigg.local:7800/gdx2.field/{z}/{x}/{y}.pbf"],
-  // tiles:[`${gdx2_cfg.gdx2_map_url}field/{z}/{x}/{y}.pbf`],
-  tiles:[`http://r48-vws03.zsniigg.local:7800/gdx2.field/{z}/{x}/{y}.pbf`],
+  tiles:[`${gdx2_cfg.gdx2_map_url}${layer_name_field}/{z}/{x}/{y}.pbf`],   // tiles:[`http://r48-vws03.zsniigg.local:7800/gdx2.field/{z}/{x}/{y}.pbf`],
   minzoom: 0,
   maxzoom: 22,
 }
 
 export const fieldLayer: LayerProps = {
-  id: 'field',
+  id: `${gdx2_cfg.gdx2_map_db}.${layer_name_field}`,
   type: 'fill',
-  source: 'gdx2.field',
+  source: `${gdx2_cfg.gdx2_map_db}.${layer_name_field}`,
   // filter: ['has', 'point_count'],
-  "source-layer": "gdx2.field",
+  "source-layer": `${gdx2_cfg.gdx2_map_db}.${layer_name_field}`,
   paint: {
     'fill-color': '#693502',
     'fill-opacity': 0.2   
@@ -88,42 +87,71 @@ export const lu_labels_Layer: LayerProps = {
 }
 
 // sta
+const layer_name_sta:string = 'sta';
+
 export const sta_Source: SourceProps = {
-  id:`${gdx2_cfg.gdx2_map_url}.sta`,
+  id:`${gdx2_cfg.gdx2_map_db}.${layer_name_sta}`,
   type:"vector",
-  tiles:[`${gdx2_cfg.gdx2_map_url}sta/{z}/{x}/{y}.pbf`],   // tiles:["http://r48-vws03.zsniigg.local:7800/gdx2.lu/{z}/{x}/{y}.pbf"],
+  tiles:[`${gdx2_cfg.gdx2_map_url}${layer_name_sta}/{z}/{x}/{y}.pbf`],   // tiles:["http://r48-vws03.zsniigg.local:7800/gdx2.lu/{z}/{x}/{y}.pbf"],
   minzoom: 0,
   maxzoom: 22,
 }
 
 export const sta_Layer: LayerProps = {
-  id: 'sta',
+  id: `${gdx2_cfg.gdx2_map_db}.${layer_name_sta}`,
   type: 'fill',
-  source: `${gdx2_cfg.gdx2_map_url}.sta`,
-  "source-layer": `${gdx2_cfg.gdx2_map_url}.sta`,
+  source: `${gdx2_cfg.gdx2_map_db}.${layer_name_sta}`,
+  "source-layer": `${gdx2_cfg.gdx2_map_db}.${layer_name_sta}`,
   paint: {
     // 'fill-color': '#c2e75b',
-    "fill-outline-color": '#0a0171',
+    "fill-outline-color": '#0a3451',
     'fill-opacity': 0.2   
   }
 };
 
 // stl
+const layer_name_stl:string = 'stl';
+
 export const stl_Source: SourceProps = {
-  id:`${gdx2_cfg.gdx2_map_url}.stl`,
+  id:`${gdx2_cfg.gdx2_map_db}.${layer_name_stl}`,
   type:"vector",
-  tiles:[`${gdx2_cfg.gdx2_map_url}stl/{z}/{x}/{y}.pbf`],
+  tiles:[`${gdx2_cfg.gdx2_map_url}${layer_name_stl}/{z}/{x}/{y}.pbf`],
   minzoom: 0,
   maxzoom: 22,
 }
 
 export const stl_Layer: LayerProps = {
-  id: 'stl',
-  source: `${gdx2_cfg.gdx2_map_url}.stl`,
-  "source-layer": `${gdx2_cfg.gdx2_map_url}.stl`,
+  id: `${gdx2_cfg.gdx2_map_db}.${layer_name_stl}`,
+  source: `${gdx2_cfg.gdx2_map_db}.${layer_name_stl}`,
+  "source-layer": `${gdx2_cfg.gdx2_map_db}.${layer_name_stl}`,
   "type": "line",
   "paint": {"line-color": "#198EC8"}
 };
+
+
+// stp
+const layer_name_stp:string = 'stp';
+export const stp_Source: SourceProps = {
+  id:`${gdx2_cfg.gdx2_map_db}.${layer_name_stp}`,
+  type:"vector",
+  tiles:[`${gdx2_cfg.gdx2_map_url}${layer_name_stp}/{z}/{x}/{y}.pbf`],
+  minzoom: 0,
+  maxzoom: 22,
+}
+
+export const stp_Layer: LayerProps = {
+  id: `${gdx2_cfg.gdx2_map_db}.${layer_name_stp}`,
+  source: `${gdx2_cfg.gdx2_map_db}.${layer_name_stp}`,
+  "source-layer": `${gdx2_cfg.gdx2_map_db}.${layer_name_stp}`,
+  "type": "circle",
+  paint: {
+    'circle-color': 'blue',
+    'circle-radius': 4
+  }
+};
+
+// console.log(`${gdx2_cfg.gdx2_map_url}${layer_name}/{z}/{x}/{y}.pbf`)
+
 // надо доделать линейный слой
 // console.log(`${gdx2_cfg.gdx2_map_url}sta/{z}/{x}/{y}.pbf`)
 // console.log(`${gdx2_cfg.gdx2_map_url}lu/{z}/{x}/{y}.pbf`)
