@@ -30,7 +30,7 @@ import type {LayerProps, SourceProps} from '@vis.gl/react-maplibre';
 // };
 
 // Месторождения
-const layer_name_field:string = 'field';
+export const layer_name_field:string = 'field';
 export const fieldSource: SourceProps = {
   id:`${gdx2_cfg.gdx2_map_db}.${layer_name_field}`,
   type:"vector",
@@ -52,8 +52,10 @@ export const fieldLayer: LayerProps = {
 };
 
 // Лицензионные участки
+export const layer_name_lu:string = 'lu';
+
 export const luSource: SourceProps = {
-  id:"gdx2.lu",
+  id:`${gdx2_cfg.gdx2_map_db}.${layer_name_lu}`,
   type:"vector",
   // tiles:["http://r48-vws03.zsniigg.local:7800/gdx2.lu/{z}/{x}/{y}.pbf"],
   tiles:[`${gdx2_cfg.gdx2_map_url}lu/{z}/{x}/{y}.pbf`],
@@ -62,11 +64,11 @@ export const luSource: SourceProps = {
 }
 
 export const luLayer: LayerProps = {
-  id: 'lu',
+  id: `${gdx2_cfg.gdx2_map_db}.${layer_name_lu}`,
   type: 'fill',
-  source: 'gdx2.lu',
+  source: `${gdx2_cfg.gdx2_map_db}.${layer_name_lu}`,
   // filter: ['has', 'point_count'],
-  "source-layer": "gdx2.lu",
+  "source-layer": `${gdx2_cfg.gdx2_map_db}.${layer_name_lu}`,
   paint: {
     'fill-color': '#0a0171',
     'fill-opacity': 0.2   
@@ -76,7 +78,7 @@ export const luLayer: LayerProps = {
 export const lu_labels_Layer: LayerProps = {
   'id': 'lu-labels',
   'type': 'symbol',
-  'source': 'gdx2.lu',
+  'source': `${gdx2_cfg.gdx2_map_db}.${layer_name_lu}`,
   'layout': {
       'text-field': ['get', 'name_rus'],
       'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
@@ -87,7 +89,7 @@ export const lu_labels_Layer: LayerProps = {
 }
 
 // sta
-const layer_name_sta:string = 'sta';
+export const layer_name_sta:string = 'sta';
 
 export const sta_Source: SourceProps = {
   id:`${gdx2_cfg.gdx2_map_db}.${layer_name_sta}`,
@@ -110,7 +112,7 @@ export const sta_Layer: LayerProps = {
 };
 
 // stl
-const layer_name_stl:string = 'stl';
+export const layer_name_stl:string = 'stl';
 
 export const stl_Source: SourceProps = {
   id:`${gdx2_cfg.gdx2_map_db}.${layer_name_stl}`,
@@ -130,7 +132,7 @@ export const stl_Layer: LayerProps = {
 
 
 // stp
-const layer_name_stp:string = 'stp';
+export const layer_name_stp:string = 'stp';
 export const stp_Source: SourceProps = {
   id:`${gdx2_cfg.gdx2_map_db}.${layer_name_stp}`,
   type:"vector",

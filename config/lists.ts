@@ -55,12 +55,12 @@ export const list_stat: IStatList[] = [
     link: "/table/lu",
   },
   {
-    title: "ПИ",
+    title: "Полезных ископаемых",
     url: gdx2_urls.gdx2_url_report_pi_count,
     link: "/table/pi",
   },
   {
-    title: "Вид работ",
+    title: "Видов работ",
     url: gdx2_urls.gdx2_url_report_vid_rab_count,
     link: "/table/vidrab",
   },
