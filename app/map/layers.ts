@@ -106,8 +106,9 @@ export const sta_Layer: LayerProps = {
   "source-layer": `${gdx2_cfg.gdx2_map_db}.${layer_name_sta}`,
   paint: {
     // 'fill-color': '#c2e75b',
-    "fill-outline-color": '#0a3451',
-    'fill-opacity': 0.2   
+    'fill-color': '#EFCDB8',
+    "fill-outline-color": '#CD9575', 
+    'fill-opacity': 0.6   
   }
 };
 
