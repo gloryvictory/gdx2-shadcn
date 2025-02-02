@@ -1,33 +1,7 @@
 import { gdx2_cfg } from '@/config/cfg';
 // import type {LayerProps, SourceProps} from 'react-map-gl';
 import type {LayerProps, SourceProps} from '@vis.gl/react-maplibre';
-// import {Map, Layer} from '@vis.gl/react-maplibre';
 
-
-// const  {gdx2map_host_port_db_name, gdx2map_db_name } = cfg 
-
-// // Файлы
-// export const fileSource: SourceProps = {
-//   id:"gdx2.file",
-//   type:"vector",
-//   // tiles:["http://r48-vws03.zsniigg.local:7800/gdx2.file/{z}/{x}/{y}.pbf"],
-//   tiles:["http://localhost:7800/gdx2.file/{z}/{x}/{y}.pbf"],
-//   // tiles:["http://localhost:3333/file/{z}/{x}/{y}"],
-//   minzoom: 0,
-//   maxzoom: 22,
-// }
-
-// export const fileLayer: LayerProps = {
-//   id: 'points-file',
-//   type: 'circle',
-//   source: 'gdx2.file',
-//   // filter: ['has', 'point_count'],
-//   "source-layer": "gdx2.file",
-//   paint: {
-//     'circle-color': 'blue',
-//     'circle-radius': 4
-//   }
-// };
 
 // Месторождения
 export const layer_name_field:string = 'field';
@@ -106,8 +80,9 @@ export const sta_Layer: LayerProps = {
   "source-layer": `${gdx2_cfg.gdx2_map_db}.${layer_name_sta}`,
   paint: {
     // 'fill-color': '#c2e75b',
-    "fill-outline-color": '#0a3451',
-    'fill-opacity': 0.2   
+    'fill-color': '#EFCDB8',
+    "fill-outline-color": '#CD9575', 
+    'fill-opacity': 0.6   
   }
 };
 
@@ -153,7 +128,6 @@ export const stp_Layer: LayerProps = {
 };
 
 // console.log(`${gdx2_cfg.gdx2_map_url}${layer_name}/{z}/{x}/{y}.pbf`)
-
 // надо доделать линейный слой
 // console.log(`${gdx2_cfg.gdx2_map_url}sta/{z}/{x}/{y}.pbf`)
 // console.log(`${gdx2_cfg.gdx2_map_url}lu/{z}/{x}/{y}.pbf`)

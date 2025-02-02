@@ -14,7 +14,7 @@ export function useCounts(url : string) {
       setLoading(true)
       
       const count1 = window.localStorage.getItem(url); // Retrieve auth token from localStorage
-
+      // const count1 = null
       if (count1) {
         setCount(JSON.parse(count1)) 
       }else{

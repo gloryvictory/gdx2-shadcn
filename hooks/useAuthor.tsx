@@ -1,7 +1,8 @@
 import {useEffect, useState} from 'react'
 import axios, {AxiosError} from 'axios'
-import { IResult, IResultReport } from '@/types/models'
-import { gdx2_urls } from '@/config/urls'
+import { IResult } from '@/types/models'
+
+
 
 export function useAuthor(url : string ) {
   const [data, setData] = useState<IResult>()
@@ -16,6 +17,7 @@ export function useAuthor(url : string ) {
       setLoading(true)
       
       const data1 = window.localStorage.getItem(url); // Retrieve auth token from localStorage
+      // const data1 = null
 
       if (data1) {
         setData(JSON.parse(data1)) 
@@ -25,8 +27,6 @@ export function useAuthor(url : string ) {
         setData(response?.data)
       }
 
-
-      // const counts:string = response.data['count']
       setLoading(false)
     } catch (e: unknown) {
       const error = e as AxiosError
