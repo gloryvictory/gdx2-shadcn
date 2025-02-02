@@ -4,8 +4,8 @@
 // import MapLibreGL_Map from "./MapLibreGL_Map";
 import dynamic from 'next/dynamic'
 
-// import MapLibreGL_Map from "./myMap";
-const DynamicComponentWithNoSSR = dynamic(
+// // import MapLibreGL_Map from "./myMap";
+const MapLibreGLMapDynamicComponentWithNoSSR = dynamic(
   () => import('./MapLibreGL_Map'),
   { ssr: false }
 )
@@ -13,11 +13,9 @@ const DynamicComponentWithNoSSR = dynamic(
 
 export default function Map_GL() {
   return (
+    // <h1>test</h1>
     // <MapProvider>
-      <DynamicComponentWithNoSSR />
-      // <MapLibreGL_Map />
+      <MapLibreGLMapDynamicComponentWithNoSSR />
     // </MapProvider>
-      
-
   );
 }

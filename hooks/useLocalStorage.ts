@@ -4,11 +4,14 @@ export const useLocalStorage = (key: string, defaultValue: any) => {
   const [value, setValue] = useState(defaultValue);
 
   const changeValue = (value: any) => {        
+    if (typeof window !== "undefined" && window.localStorage) {
       setValue(value);
       localStorage.setItem(key, JSON.stringify(value));
+    }
   } 
 
   useEffect(() => {
+    if (typeof window !== "undefined" && window.localStorage) {
       const stored = localStorage.getItem(key);
 
       if (!stored) {
@@ -17,6 +20,7 @@ export const useLocalStorage = (key: string, defaultValue: any) => {
       } else {
           setValue(JSON.parse(stored));
       }
+    }
   }, [defaultValue, key]);
 
   return [value, changeValue]

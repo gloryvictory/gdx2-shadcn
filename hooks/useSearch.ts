@@ -8,7 +8,7 @@
 
 import {useEffect, useState} from 'react'
 import axios, {AxiosError} from 'axios'
-import { ICount, IResultReport } from '@/types/models'
+import {  IResultReport } from '@/types/models'
 import { gdx2_urls } from '@/config/urls'
 
 export function useSearch(query: string| undefined) {

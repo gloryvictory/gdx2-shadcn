@@ -9,27 +9,30 @@ export function useCounts(url : string) {
 
   
   async function fetchCounts() {
-    try {
-      setError('')
-      setLoading(true)
+    if (typeof window !== "undefined" && window.localStorage) {
+      try {
       
-      const count1 = window.localStorage.getItem(url); // Retrieve auth token from localStorage
+          setError('')
+          setLoading(true)
+          
+          const count1 = window.localStorage.getItem(url); // Retrieve auth token from localStorage
 
-      if (count1) {
-        setCount(JSON.parse(count1)) 
-      }else{
-        const response = await axios.get<ICount>(url)
-        window.localStorage.setItem(url, JSON.stringify(response.data));
-        setCount(response.data)
-      }
+          if (count1) {
+            setCount(JSON.parse(count1)) 
+          }else{
+            const response = await axios.get<ICount>(url)
+            window.localStorage.setItem(url, JSON.stringify(response.data));
+            setCount(response.data)
+          }
 
 
-      // const counts:string = response.data['count']
-      setLoading(false)
-    } catch (e: unknown) {
-      const error = e as AxiosError
-      setLoading(false)
-      setError(error.message)
+          // const counts:string = response.data['count']
+          setLoading(false)
+        } catch (e: unknown) {
+          const error = e as AxiosError
+          setLoading(false)
+          setError(error.message)
+        } 
     }
   }
 

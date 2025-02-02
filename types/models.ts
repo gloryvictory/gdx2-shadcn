@@ -119,3 +119,23 @@ export interface IList {
     lat?: number
     lon?: number
     }
+
+
+    export interface IDataMap {
+      id: number
+      avts: string
+      god_end: string
+      god_nach: string
+      in_n_rosg: string
+      in_n_tgf: string
+      method: string
+      n_uk_rosg: string
+      n_uk_tgf: string
+      name_otch: string
+      nom_1000: string
+      org_isp: string
+      scale: string
+      tgf: string
+      vid_iz: string
+      web_uk_id: string
+    }

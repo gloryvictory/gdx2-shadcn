@@ -10,31 +10,32 @@ export function useAuthor(url : string ) {
 
   
   async function fetchData() {
+    if (typeof window !== "undefined" && window.localStorage) {
+      try {
+        
+        setError('')
+        setLoading(true)
+        
+        const data1 = window.localStorage.getItem(url); // Retrieve auth token from localStorage
 
-    try {
-      setError('')
-      setLoading(true)
-      
-      const data1 = window.localStorage.getItem(url); // Retrieve auth token from localStorage
+        if (data1) {
+          setData(JSON.parse(data1)) 
+        }else{
+          const response = await axios.get<IResult>(url)
+          window.localStorage.setItem(url, JSON.stringify(response?.data));
+          setData(response?.data)
+        }
 
-      if (data1) {
-        setData(JSON.parse(data1)) 
-      }else{
-        const response = await axios.get<IResult>(url)
-        window.localStorage.setItem(url, JSON.stringify(response?.data));
-        setData(response?.data)
+
+        // const counts:string = response.data['count']
+        setLoading(false)
+      } catch (e: unknown) {
+        const error = e as AxiosError
+        setLoading(false)
+        setError(error?.message)
       }
-
-
-      // const counts:string = response.data['count']
-      setLoading(false)
-    } catch (e: unknown) {
-      const error = e as AxiosError
-      setLoading(false)
-      setError(error?.message)
     }
   }
-
   useEffect(() => {
     fetchData()
   }, [])

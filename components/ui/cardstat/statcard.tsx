@@ -1,6 +1,5 @@
 'use client'
 
-import { gdx2_urls } from "@/config/urls";
 import { useCounts } from "@/hooks/useCounts";
 import { Card, CardFooter, CardHeader } from "../card";
 import { Spinner } from "../spinner";
