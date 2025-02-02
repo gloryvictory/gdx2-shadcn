@@ -24,12 +24,13 @@ export function useCounts(url : string) {
       }
 
 
-      // const counts:string = response.data['count']
-      setLoading(false)
-    } catch (e: unknown) {
-      const error = e as AxiosError
-      setLoading(false)
-      setError(error.message)
+          // const counts:string = response.data['count']
+          setLoading(false)
+        } catch (e: unknown) {
+          const error = e as AxiosError
+          setLoading(false)
+          setError(error.message)
+        } 
     }
   }
 
