@@ -45,20 +45,12 @@ export default function MapLibreGL_Map() {
   const [lat, setLat]             = React.useState<number>(66);
   const [zoom, setZoom]           = React.useState<number>(2.0);
   
-  const [showTable, setShowTable] = React.useState<boolean>(false);
-  const [lng, setLng]             = React.useState<number>(66);
-  const [lat, setLat]             = React.useState<number>(66);
-  const [zoom, setZoom]           = React.useState<number>(2.0);
   
-
   const onTableClose = () => {
     setShowTable(false);
   };
 
-  const onTableClose = () => {
-    setShowTable(false);
-  };
-
+  
 
   const onMapLoad = React.useCallback(() => {
     // if (typeof window !== "undefined" && window.localStorage) {
