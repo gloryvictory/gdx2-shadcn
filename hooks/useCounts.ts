@@ -32,7 +32,7 @@ export function useCounts(url : string) {
           setError(error.message)
         } 
     }
-  }
+  
 
   useEffect(() => {
     fetchCounts()
