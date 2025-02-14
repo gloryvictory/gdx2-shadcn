@@ -1,10 +1,11 @@
 // app/blog/[slug]/page.js
 'use client';
+import { useSearchParams } from 'next/navigation';
 
 import { layer_name_sta, sta_Layer, sta_Source } from '@/app/map/layers';
 import { gdx2_cfg } from '@/config/cfg';
-import { useParams } from 'next/navigation';
-import React, { useState } from 'react';
+// import { useParams } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 import {FullscreenControl, GeolocateControl, Layer, LayerProps, Map, MapInstance, MapRef, NavigationControl, ScaleControl, Source} from '@vis.gl/react-maplibre'; //AttributionControl
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { LIGHT_MAP_STYLE } from '@/app/map/basemaps';
@@ -13,30 +14,43 @@ import { Spinner } from '@/components/ui/spinner';
 
 const layer_sta = `${gdx2_cfg.gdx2_map_db}.${layer_name_sta}`
 
+
 export default function StaByRGF() {
   const mapRef = React.useRef<MapRef| null>(null); 
   const [isLoading, setLoading] = useState<boolean>(false)
+  const [stargf,    setStargf ] = useState<string>("")
+  // const [searchParams, setSearchParams] = useSearchParams();
 
+  
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    const searchParams = new URLSearchParams(url.search);
+    const rgf_num1 = searchParams.get('stargf');
+    
+    // const rgf_num = searchParams?.get('stargf') || ''
 
-  const params = useParams();
-  const { slug } = params;
+    if (rgf_num1) {
+      console.log(rgf_num1)
+      setStargf(rgf_num1)
+    }
+  }, []);
+  
 
-  const rgf_num = slug?.toString();
+  // const params = useParams();
+  // const { slug } = params;
+  // const rgf_num = slug?.toString();
 
   const onMapLoad = React.useCallback(() => {
     // if (typeof window !== "undefined" && window.localStorage) {
       
       if (!mapRef.current) return;
 
-    // if (typeof window !== "undefined" && window.localStorage) {
-
-
     if (mapRef) {
       const mapref:MapRef = mapRef.current
       
       const map:MapInstance = mapref.getMap()
       const filter: ExpressionSpecification = [       // Define the filter expression
-        '==', ['get', 'in_n_rosg'],  `${rgf_num}`//"271433"
+        '==', ['get', 'in_n_rosg'],  `${stargf}`//"271433"
       ];
       
       setLoading(true)
@@ -44,9 +58,68 @@ export default function StaByRGF() {
       map?.addSource(sta_id, sta_Source); // Добавляем слой  
       const sta_Layer1: LayerProps = sta_Layer! 
       map?.addLayer(sta_Layer1 as AddLayerObject); // Add the layer
+      console.log(filter)
+
       map?.setFilter(layer_sta, filter);
       setLoading(false)
       
+    
+    }
+    // } //if...  
+  }, []); //const onMapLoad 
+
+
+  // const onMapClick = (e: MapMouseEvent & {features?: MapGeoJSONFeature[] | undefined;} & Object) => {
+    // if (mapRef) {
+    //   const mapref:MapRef = mapRef.current!      
+    //   const map:MapInstance = mapref.getMap()
+    //   // Center the map on the coordinates of any clicked symbol from the 'symbols' layer.
+    //   map.on('click', layer_sta, (e) => {
+    //     map.flyTo({
+    //         center: e?.features[0]?.geometry?.coordinates,
+    //     });
+    //   });
+    // }
+  // }
+
+  return (
+    <>
+      {isLoading && <Spinner size="lg" className="bg-black dark:bg-white -z-100" /> 
+        // : <h1 className="mt-50  h-5 w-5 absolute right-[50%] left-[50%] top-5 bg-black dark:bg-white -z-100">Blog Post: {slug}</h1>
+      }
+      <Map
+        initialViewState={{
+          longitude: 66,
+          latitude: 66,
+          zoom: 3.5,
+          bearing: 0,
+          pitch: 0
+        }}
+
+        style={{ width: "100vw", height: "100vh", left:0, position:"absolute" }}
+        mapStyle={LIGHT_MAP_STYLE}
+        ref={mapRef}
+        onLoad={onMapLoad}
+        // onClick={onMapClick}
+        
+      >
+      {/* <Source {...sta_Source}   >
+        <Layer {...sta_Layer} />
+      </Source>    */}
+
+      <FullscreenControl  position="top-right"    style={{ marginRight: 10 }} />
+      <GeolocateControl   position="top-right"    style={{ marginRight: 10 }}/>
+      <NavigationControl  position="top-right"    style={{ marginRight: 10 }}/>
+      <ScaleControl       position="bottom-right" style={{ marginRight: 10 }}/>
+
+      </Map>
+
+
+    </>
+    
+  );
+}
+
       // const filteredFeatures = map.querySourceFeatures('your-source-id', {
       //   sourceLayer: 'your-source-layer-id',
       //   filter: ['==', 'property-name', 'value'],
@@ -120,59 +193,3 @@ export default function StaByRGF() {
       //   if(features && features?.length){
       //   }
       // });
-    
-    }
-    // } //if...  
-  }, []); //const onMapLoad 
-
-
-  // const onMapClick = (e: MapMouseEvent & {features?: MapGeoJSONFeature[] | undefined;} & Object) => {
-    // if (mapRef) {
-    //   const mapref:MapRef = mapRef.current!      
-    //   const map:MapInstance = mapref.getMap()
-    //   // Center the map on the coordinates of any clicked symbol from the 'symbols' layer.
-    //   map.on('click', layer_sta, (e) => {
-    //     map.flyTo({
-    //         center: e?.features[0]?.geometry?.coordinates,
-    //     });
-    //   });
-    // }
-  // }
-
-  return (
-    <>
-      {isLoading && <Spinner size="lg" className="bg-black dark:bg-white -z-100" /> 
-        // : <h1 className="mt-50  h-5 w-5 absolute right-[50%] left-[50%] top-5 bg-black dark:bg-white -z-100">Blog Post: {slug}</h1>
-      }
-      <Map
-        initialViewState={{
-          longitude: 66,
-          latitude: 66,
-          zoom: 3.5,
-          bearing: 0,
-          pitch: 0
-        }}
-
-        style={{ width: "100vw", height: "100vh", left:0, position:"absolute" }}
-        mapStyle={LIGHT_MAP_STYLE}
-        ref={mapRef}
-        onLoad={onMapLoad}
-        // onClick={onMapClick}
-        
-      >
-      {/* <Source {...sta_Source}   >
-        <Layer {...sta_Layer} />
-      </Source>    */}
-
-      <FullscreenControl  position="top-right"    style={{ marginRight: 10 }} />
-      <GeolocateControl   position="top-right"    style={{ marginRight: 10 }}/>
-      <NavigationControl  position="top-right"    style={{ marginRight: 10 }}/>
-      <ScaleControl       position="bottom-right" style={{ marginRight: 10 }}/>
-
-      </Map>
-
-
-    </>
-    
-  );
-}
